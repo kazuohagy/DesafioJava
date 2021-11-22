@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,8 +30,12 @@ public class ClienteResource {
 		return clienteRepository.findById(id);
 	}
 	@PostMapping("/cliente")
-	public Cliente salvarProduto(@RequestBody Cliente cliente) {
+	public Cliente salvarCliente(@RequestBody Cliente cliente) {
 		return clienteRepository.save(cliente);
+	}
+	@DeleteMapping("/cliente")
+	public void deletaCliente(@RequestBody Cliente cliente) {
+		clienteRepository.delete(cliente);
 	}
 	
 }
